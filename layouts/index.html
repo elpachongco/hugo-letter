@@ -1,0 +1,44 @@
+{{ define "main" }} {{ range .Params }} {{ end }}
+
+<div id="hero-home" class="side-padded">
+  <p><b> Hi! This is the blog of Earl Siachongco </b></p>
+
+  <p></p>
+</div>
+<h2 class="home-heading">Featured Posts</h2>
+<ol id="" class="side-padded slider">
+  {{ range partial "GetFeatured.html" 5 }}
+  <li class="slider-item">
+    <a href="{{ .RelPermalink }}">
+      <h3>{{ .LinkTitle }}</h3>
+      <p>{{ .Summary | truncate 60 }}</p>
+    </a>
+  </li>
+  {{ end }}
+</ol>
+
+<h2 class="home-heading">Recent Posts</h2>
+<ol id="" class="side-padded slider">
+  {{ range .Site.RegularPages }}
+  <li class="slider-item">
+    <a href="{{ .RelPermalink }}">
+      <h3>{{ .LinkTitle }}</h3>
+      <p>{{ .Summary | truncate 60 }}</p>
+    </a>
+  </li>
+  {{ end }}
+</ol>
+<h2 class="home-heading">Projects</h2>
+<h2 id="media" class="home-heading">Media</h2> <!-- use 'artowrks' instead?  -->
+<h2 class="home-heading">Recently Updated</h2> <!-- Use 'banner' on post cards -->
+<h2 class="home-heading">Latest Shorts</h2>
+<ol id="" class="side-padded slider">
+  {{ range where .Site.RegularPages "Section" "shorts" }}
+  <a href="{{ .RelPermalink }}" class="undecorated-link">
+    <li class="slider-item shorts-item">
+      <p>{{ .Summary | truncate 60 }}</p>
+    </li>
+  </a>
+  {{ end }}
+</ol>
+{{ end }}

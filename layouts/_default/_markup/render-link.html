@@ -1,0 +1,9 @@
+<a href="{{ .Destination | safeURL }}"
+  {{- with .Title }} title="{{ . }}"{{ end -}}
+>
+  {{- with .Text | safeHTML }}{{ . }}{{ end -}}
+</a>
+{{ $stored_links := .Page.Store.Get "links" }}
+{{ if (not (in $stored_links .) )}}
+  {{ .Page.Store.Add "links" (slice .) }}
+{{ end }}

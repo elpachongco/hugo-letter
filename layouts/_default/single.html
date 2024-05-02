@@ -1,0 +1,72 @@
+{{ define "main" }}
+<section id="main">
+  <div id="title-area" class="side-padded">
+    <h1 id="title">{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+  </div>
+  <div id="article-column-container">
+    <aside id="article-sidebar">
+      {{ if ge (len (.TableOfContents)) 33 -}}
+        <h3>Contents</h3>
+        {{ .TableOfContents }}
+      {{- end -}}
+
+      {{ .Page.Store.Get "links "}}
+      {{ if .Page.Store.Get "links"}}
+        <h3>Links</h3>
+        <ol>
+        {{ $a := .Page.Store.Get "links" }}
+        {{ range $a }}
+          <li>
+          <a href="{{ .Destination }}" title="{{ .Title }}">{{ .Text }}</a>
+          </li>
+        {{ end }}
+        </ol>
+      {{ end }}
+    </aside>
+    <div>
+      <div id="article-info-bar" class="side-padded">
+        <details>
+          <summary>
+            {{ .PublishDate.Format "Jan 2, 2006" }}
+          </summary>
+          Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}
+        </details>
+        {{ if .Draft }} Note: This is a draft
+        {{ end }}
+      </div>
+      <article id="article-content" class="side-padded">
+        <div>
+          {{ .Content }}
+        </div>
+      </article>
+    </div>
+</section>
+<aside id="meta">
+  <div>
+    {{ with .GetTerms "topics" }}
+    <ul id="topics">
+      {{ range . }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+    {{ with .GetTerms "tags" }}
+    <ul id="tags">
+      {{ range . }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+  <div>
+    {{ with .PrevInSection }}
+    <a class="previous" href="{{ .RelPermalink }}"> {{ .LinkTitle }}</a>
+    {{ end }}
+    {{ with .NextInSection }}
+    <a class="next" href="{{ .RelPermalink }}"> {{ .LinkTitle }}</a>
+    {{ end }}
+  </div>
+</aside>
+</div>
+{{ end }}
