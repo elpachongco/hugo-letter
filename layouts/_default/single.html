@@ -1,28 +1,11 @@
 {{ define "main" }}
 <section id="main">
-  <div id="title-area" class="side-padded">
-    <h1 id="title">{{ .Title }}</h1>
-    <p>{{ .Description }}</p>
-  </div>
-  <div id="article-column-container">
-    <aside id="article-sidebar">
-      {{ if ge (len (.TableOfContents)) 33 -}}
-        <h3>Contents</h3>
-        {{ .TableOfContents }}
-      {{- end -}}
-
-      {{ if .Page.Store.Get "links"}}
-        <h3>Links</h3>
-        <ol>
-        {{ $a := .Page.Store.Get "links" }}
-        {{ range $a }}
-          <li>
-          <a href="{{ .Destination }}" title="{{ .Title }}">{{ .Text }}</a>
-          </li>
-        {{ end }}
-        </ol>
-      {{ end }}
-    </aside>
+  <div id="article-left-spacer"></div>
+  <article id="article-container">
+    <div id="title-area" class="side-padded">
+      <h1 id="title">{{ .Title }}</h1>
+      <p>{{ .Description }}</p>
+    </div>
     <div>
       <div id="article-info-bar" class="side-padded">
         <details>
@@ -34,12 +17,33 @@
         {{ if .Draft }} Note: This is a draft
         {{ end }}
       </div>
-      <article id="article-content" class="side-padded">
+      <div id="article-content" class="side-padded">
         <div>
           {{ .Content }}
         </div>
-      </article>
+      </div>
     </div>
+  </article>
+  <aside id="article-sidebar-container">
+    <div id="article-sidebar">
+      {{ if ge (len (.TableOfContents)) 33 -}}
+      <h3>Contents</h3>
+      {{ .TableOfContents }}
+      {{- end -}}
+
+      {{ if .Page.Store.Get "links"}}
+      <h3>Links</h3>
+      <ol id="article-sidebar-links">
+        {{ $a := .Page.Store.Get "links" }}
+        {{ range $a }}
+        <li>
+          <a href="{{ .Destination }}" title="{{ .Title }}">{{ .Text }}</a>
+        </li>
+        {{ end }}
+      </ol>
+      {{ end }}
+    </div>
+  </aside>
 </section>
 <aside id="meta">
   <div>

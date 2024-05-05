@@ -1,14 +1,20 @@
-<div id="header" class="side-padded">
+<header id="header" class="side-padded">
   <div>
-    <h1 id="header-blog-title" class="">
-      <a href="/">
+    <h1 id="header-blog-title">
+      {{ $img := .Resources.Get "logo.png" }}
+      {{ with $img }}
+        {{ .RelPermaLink }}
+      {{ end }}
+      <div id="header-site-logo"><img src="/logo.png"></div>
+      <a href="/" class="undecorated-link">
         {{ .Site.Title }}
       </a>
     </h1>
     <div>
       <h3>
-        <a href="#" id="feed-subscribe">
-          <i class="rss-icon" data-feather="rss"></i> Follow this blog
+        <a href="#" id="feed-subscribe" class="undecorated-link">
+          <i class="rss-icon" data-feather="rss"></i>
+          <span>Follow this blog</span>
         </a>
       </h3>
     </div>
@@ -16,8 +22,8 @@
 
   <div id="header-nav">
 
-      <a href="/shorts/">Shorts</a>
-      <a href="#">About</a>
-      <a href="#">Search</a>
+      <a href="/shorts/" class="undecorated-link">Shorts</a>
+      <a href="#" class="undecorated-link">About</a>
+      <a href="#" class="undecorated-link">Search</a>
   </div>
-</div>
+</header>

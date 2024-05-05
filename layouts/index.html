@@ -1,8 +1,9 @@
 {{ define "main" }} {{ range .Params }} {{ end }}
 
-<div id="hero-home" class="side-padded">
-  <p><b> Hi! This is the blog of Earl Siachongco </b></p>
-
+{{/*
+<div id="hero-home" class="side-padded pixelify-sans">
+  <p> Welcome... </p>
+*/}}
   <p></p>
 </div>
 <h2 class="home-heading">Featured Posts</h2>
@@ -21,7 +22,7 @@
 <ol id="" class="side-padded slider">
   {{ range .Site.RegularPages }}
   <li class="slider-item">
-    <a href="{{ .RelPermalink }}">
+    <a href="{{ .RelPermalink }}" class="">
       <h3>{{ .LinkTitle }}</h3>
       <p>{{ .Summary | truncate 60 }}</p>
     </a>
