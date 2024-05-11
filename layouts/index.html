@@ -10,10 +10,13 @@
 <ol id="" class="side-padded slider">
   {{ range partial "GetFeatured.html" 5 }}
   <li class="slider-item">
-    <a href="{{ .RelPermalink }}">
-      <h3>{{ .LinkTitle }}</h3>
-      <p>{{ .Summary | truncate 60 }}</p>
-    </a>
+    <a href="{{ .RelPermalink }}" class="fill-div">
+      <div class="slider-content">
+        <h4 id="date"> {{ .Date.Format "Jan 2, 2006" }} </h4>
+        <h3>{{ .LinkTitle }}</h3>
+        <p>{{ .Summary | truncate 900 }}</p>
+      </div>
+  </a>
   </li>
   {{ end }}
 </ol>
@@ -22,16 +25,52 @@
 <ol id="" class="side-padded slider">
   {{ range .Site.RegularPages }}
   <li class="slider-item">
-    <a href="{{ .RelPermalink }}" class="">
+    <a href="{{ .RelPermalink }}" class="fill-div">
+      <h4 id="date"> {{ .Date.Format "Jan 2, 2006" }} </h4>
       <h3>{{ .LinkTitle }}</h3>
-      <p>{{ .Summary | truncate 60 }}</p>
+      <p>{{ .Summary | truncate 800 }}</p>
     </a>
   </li>
   {{ end }}
 </ol>
 <h2 class="home-heading">Projects</h2>
+<ol id="" class="side-padded slider">
+  {{ $gitUserName := .Site.Params.gitUsername }}
+  {{ range .Site.Data.homepage.index.projects }}
+  <li class="slider-item">
+    <a href="{{ .url }}">
+      <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
+      {{ $gitUserName }}/
+      <h3>{{ .name }}</h3>
+      <p>{{ .description | truncate 800 }}</p>
+    </a>
+    <a href="{{ .github_url }}">Github</a>
+    <ul>
+    {{ range .technologies }}
+      <li>{{ . }}</li>
+    {{ end }}
+    </ul>
+  </li>
+  {{ end }}
+</ol>
+
 <h2 id="media" class="home-heading">Media</h2> <!-- use 'artowrks' instead?  -->
-<h2 class="home-heading">Recently Updated</h2> <!-- Use 'banner' on post cards -->
+<ol id="media-slider" class="side-padded slider">
+  {{ range .Site.Data.homepage.index.media }}
+  <li>
+    <figure>
+      <img loading="lazy" src="{{ .path }}" />
+      <figcaption>
+        alksjdf
+        <a href="{{ .source_url }}">
+      source
+        </a>
+
+      </figcaption>
+    </figure>
+  {{ end }}
+  </li>
+</ol>
 <h2 class="home-heading">Latest Shorts</h2>
 <ol id="" class="side-padded slider">
   {{ range where .Site.RegularPages "Section" "shorts" }}
@@ -42,4 +81,15 @@
   </a>
   {{ end }}
 </ol>
+<h2 class="home-heading">All posts</h2>
+<div id="all-posts-section">
+  <ol>
+    {{ range .Site.RegularPages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title | truncate 60 }}</a>
+    </li>
+    {{ end }}
+  </ol>
+</div>
 {{ end }}
+

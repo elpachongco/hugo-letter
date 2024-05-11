@@ -2,12 +2,12 @@
 <section id="main">
   <div id="article-left-spacer"></div>
   <article id="article-container">
-    <div id="title-area" class="side-padded">
+    <div id="title-area">
       <h1 id="title">{{ .Title }}</h1>
       <p>{{ .Description }}</p>
     </div>
     <div>
-      <div id="article-info-bar" class="side-padded">
+      <div id="article-info-bar">
         <details>
           <summary>
             {{ .PublishDate.Format "Jan 2, 2006" }}
@@ -17,7 +17,7 @@
         {{ if .Draft }} Note: This is a draft
         {{ end }}
       </div>
-      <div id="article-content" class="side-padded">
+      <div id="article-content">
         <div>
           {{ .Content }}
         </div>

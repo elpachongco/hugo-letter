@@ -12,7 +12,9 @@
     </h1>
     <div>
       <h3>
-        <a href="#" id="feed-subscribe" class="undecorated-link">
+        {{ with .OutputFormats.Get "RSS" }}
+        <a href="{{ .Permalink }}" id="feed-subscribe" class="undecorated-link">
+        {{ end }}
           <i class="rss-icon" data-feather="rss"></i>
           <span>Follow this blog</span>
         </a>
