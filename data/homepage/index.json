@@ -1,0 +1,56 @@
+{
+    "projects": [
+        {
+            "name": "Bhread",
+            "url": "https://bhread.com",
+            "github_url": "https://github.com/elpachongco/bhread",
+            "description": "A decentralized social media website powered RSS/Atom feeds",
+            "technologies": [
+                "python",
+                "nginx",
+                "docker",
+                "postgresql",
+                "javascript",
+                "tailwind"
+            ]
+        },
+        {
+            "name": "letter",
+            "url": "https://bhread.com",
+            "github_url": "https://github.com/elpachongco/bhread",
+            "description": "A hugo theme used on my blog.",
+            "technologies": [
+                "hugo",
+                "html",
+                "javascript"
+            ]
+        },
+        {
+            "name": "DPU",
+            "url": "https://bhread.com",
+            "github_url": "https://github.com/elpachongco/bhread",
+            "description": "A distributed python interpreter. Fork of xpython.",
+            "technologies": [
+                "python"
+            ]
+        }
+    ],
+    "media": [
+      {
+        "path": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg",
+        "caption": "A static cat",
+        "source_url": "https://google.com"
+      },
+      {
+        "path": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg",
+        "caption": "A static cat",
+        "source_url": "https://google.com"
+      },
+      {
+        "path": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg",
+        "caption": "A static cat",
+        "source_url": "https://google.com"
+      }
+
+    ]
+}
