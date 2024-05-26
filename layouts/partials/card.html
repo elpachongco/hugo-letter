@@ -1,7 +1,9 @@
+<div class="card">
 <a href="{{ .RelPermalink }}" class="clickable-card-link">
   <div class="slider-content">
-    <h4 id="date">{{ .Date.Format "Jan 2, 2006" }}</h4>
-    <h3>{{ .LinkTitle }}</h3>
-    <p>{{ .Summary | truncate 900 }}</p>
+    <h4 class="date">{{ .Date.Format "Jan 2, 2006" }}</h4>
+    <h3>{{ .LinkTitle | truncate 50 }}</h3>
+    <p>{{ .Summary | truncate 200 }}</p>
   </div>
 </a>
+</div>

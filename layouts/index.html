@@ -1,95 +1,100 @@
-{{ define "main" }} {{ range .Params }} {{ end }}
-
-{{/*
+{{ define "main" }} {{/*
 <div id="hero-home" class="side-padded pixelify-sans">
-  <p> Welcome... </p>
-*/}}
-  <p></p>
+  <p>Welcome...</p>
 </div>
-<h2 class="home-heading">Featured Posts</h2>
+*/}}
+<h2 class="home-heading side-padded">Featured Posts</h2>
 <ol id="" class="side-padded slider">
   {{ range partial "GetFeatured.html" 5 }}
-  <li class="slider-item">
-    <a href="{{ .RelPermalink }}" class="fill-div">
-      <div class="slider-content">
-        <h4 id="date"> {{ .Date.Format "Jan 2, 2006" }} </h4>
-        <h3>{{ .LinkTitle }}</h3>
-        <p>{{ .Summary | truncate 900 }}</p>
-      </div>
-  </a>
-  </li>
+  <li class="slider-item">{{- partial "card.html" . -}}</li>
   {{ end }}
 </ol>
 
-<h2 class="home-heading">Recent Posts</h2>
+<h2 class="home-heading side-padded">Recent Posts</h2>
 <ol id="" class="side-padded slider">
-  {{ range .Site.RegularPages }}
-  <li class="slider-item">
-    <a href="{{ .RelPermalink }}" class="fill-div">
-      <h4 id="date"> {{ .Date.Format "Jan 2, 2006" }} </h4>
-      <h3>{{ .LinkTitle }}</h3>
-      <p>{{ .Summary | truncate 800 }}</p>
-    </a>
-  </li>
+  {{ range first 5 .Site.RegularPages }}
+  <li class="slider-item">{{- partial "card.html" . -}}</li>
   {{ end }}
 </ol>
-<h2 class="home-heading">Projects</h2>
+<h2 class="home-heading side-padded">Projects</h2>
 <ol id="" class="side-padded slider">
   {{ $gitUserName := .Site.Params.gitUsername }}
   {{ range .Site.Data.homepage.index.projects }}
   <li class="slider-item">
-    <a href="{{ .url }}">
-      <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
-      {{ $gitUserName }}/
-      <h3>{{ .name }}</h3>
-      <p>{{ .description | truncate 800 }}</p>
-    </a>
-    <a href="{{ .github_url }}">Github</a>
-    <ul>
-    {{ range .technologies }}
-      <li>{{ . }}</li>
-    {{ end }}
-    </ul>
+    <div class="card project-card">
+      <a href="{{ .url }}" class="clickable-card-link">
+        <span>{{ $gitUserName }}/</span>
+        <h3 class="project-card-name">{{ .name }}</h3>
+        <p class="project-card-content">{{ .description | truncate 800 }}</p>
+        <ul class="project-card-techs-list">
+          {{ range .technologies }}
+          <li class="project-card-techs-list-item">{{ . }}</li>
+          {{ end }}
+        </ul>
+      </a>
+    </div>
   </li>
   {{ end }}
 </ol>
 
-<h2 id="media" class="home-heading">Media</h2> <!-- use 'artowrks' instead?  -->
+<h2 id="media" class="home-heading side-padded">Media</h2>
+<!-- use 'artowrks' instead?  -->
 <ol id="media-slider" class="side-padded slider">
   {{ range .Site.Data.homepage.index.media }}
-  <li>
-    <figure>
-      <img loading="lazy" src="{{ .path }}" />
-      <figcaption>
-        alksjdf
-        <a href="{{ .source_url }}">
-      source
-        </a>
-
-      </figcaption>
-    </figure>
-  {{ end }}
+  <li class="slider-item">
+    <div class="media-card">
+      <figure>
+        <img class="media-card-image" loading="lazy" src="{{ .path }}" />
+        <figcaption>
+          <p class="media-card-caption">
+            {{ .caption | markdownify }}
+          </p>
+          <a href="{{ .source_url }}" class="media-card-source"> source </a>
+        </figcaption>
+      </figure>
+    </div>
   </li>
-</ol>
-<h2 class="home-heading">Latest Shorts</h2>
-<ol id="" class="side-padded slider">
-  {{ range where .Site.RegularPages "Section" "shorts" }}
-  <a href="{{ .RelPermalink }}" class="undecorated-link">
-    <li class="slider-item shorts-item">
-      <p>{{ .Summary | truncate 60 }}</p>
-    </li>
-  </a>
   {{ end }}
 </ol>
-<h2 class="home-heading">All posts</h2>
+<h2 id="homepage-shorts-heading" class="home-heading side-padded">Latest Shorts</h2>
+<ol id="" class="side-padded slider">
+  {{ $shortsItems := where .Site.RegularPages "Section" "shorts" }}
+  {{ range first 8 $shortsItems}}
+  <li class="slider-item">
+    <div class="card shorts-card">
+      <div class="shorts-card-content-container">
+        <div class="shorts-card-author-section">
+          <img class="shorts-card-author-pic" src="/logo.png"></img>
+          <span class="shorts-card-author-name">Earl</span>
+          <span class="shorts-card-date">
+            <a href="{{ .RelPermalink }}" class="date">
+              {{ .Date.Format "Jan 2, 2006" }}
+            </a>
+          </span>
+        </div>
+        <div class="shorts-card-content">{{ .Content }}</div>
+      </div>
+      </a>
+    </div>
+  </li>
+  {{ end }}
+</ol>
+<h2 id="all-posts-heading" class="home-heading side-padded">
+  All {{ len .Site.RegularPages }} posts
+</h2>
 <div id="all-posts-section">
-  <ol>
+  <ol id="all-posts-list">
     {{ range .Site.RegularPages }}
     <li>
-      <a href="{{ .RelPermalink }}">{{ .Title | truncate 60 }}</a>
+      <a href="{{ .RelPermalink }}" class="undecorated-link">
+        <div class="all-posts-list-item">
+          <span>{{ .Title | truncate 60 }}</span>
+          <span class="all-posts-list-spacer"></span>
+          <span class="all-posts-list-date">{{ .Date.Format "Jan 2, 2006" }}</span>
+        </div>
+      </a>
     </li>
     {{ end }}
   </ol>
 </div>
 {{ end }}
-

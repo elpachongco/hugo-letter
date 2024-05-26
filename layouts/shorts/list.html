@@ -1,28 +1,31 @@
 {{ define "main" }} {{ range .Params }} {{ end }}
-<h2 class="side-padded">Shorts</h2>
-<div class="side-padded">
-<p>Place for short-form content. <a href="#">Subscribe at your own risk :)</a></p>
-
-</div>
-<div id="" class="">
-<ol id="shorts-page-container" class="side-padded">
-  {{ range where .Site.RegularPages "Section" "shorts" }}
-  <a href="{{ .RelPermalink }}" class="undecorated-link">
-    <li class="slider-item shorts-item">
-      <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
-      <h3>{{ .Title }}</h3>
-      <p>{{ .Content }}</p>
-    </li>
-  </a>
-
-  <a href="{{ .RelPermalink }}" class="undecorated-link">
-    <li class="slider-item shorts-item">
-      <h4 id="date"> {{ .Date.Format "Mon Jan 2, 2006" }} </h4>
-      <h3>{{ .Title }}</h3>
-      <p>{{ .Content }}</p>
-    </li>
-  </a>
-  {{ end }}
-</ol>
+<div id="shorts-list-page">
+  <h2 id="shorts-list-page-title">Shorts</h2>
+  <div id="shorts-list-page-description">
+    <p>
+      Place for short-form content.
+      <a href="#">Subscribe at your own risk :)</a>
+    </p>
+  </div>
+  <div id="" class="">
+    <ol id="shorts-page-container" class="side-padded">
+      {{ range where .Site.RegularPages "Section" "shorts" }}
+      <li class="slider-item shorts-page-item card">
+        <a href="{{ .RelPermalink }}" class="clickable-card-link">
+          <h4 id="date">{{ .Date.Format "Mon Jan 2, 2006" }}</h4>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Content }}</p>
+        </a>
+      </li>
+      <a href="{{ .RelPermalink }}" class="undecorated-link">
+        <li class="slider-item shorts-page-item">
+          <h4 id="date">{{ .Date.Format "Mon Jan 2, 2006" }}</h4>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Content }}</p>
+        </li>
+      </a>
+      {{ end }}
+    </ol>
+  </div>
 </div>
 {{ end }}

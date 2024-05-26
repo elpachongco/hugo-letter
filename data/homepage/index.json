@@ -4,14 +4,16 @@
             "name": "Bhread",
             "url": "https://bhread.com",
             "github_url": "https://github.com/elpachongco/bhread",
-            "description": "A decentralized social media website powered RSS/Atom feeds",
+            "description": "A decentralized social media website powered by RSS/Atom feeds",
             "technologies": [
                 "python",
+                "django",
+                "htmx",
+                "tailwind",
                 "nginx",
                 "docker",
                 "postgresql",
-                "javascript",
-                "tailwind"
+                "javascript"
             ]
         },
         {
@@ -22,6 +24,7 @@
             "technologies": [
                 "hugo",
                 "html",
+                "css",
                 "javascript"
             ]
         },
@@ -29,7 +32,7 @@
             "name": "DPU",
             "url": "https://bhread.com",
             "github_url": "https://github.com/elpachongco/bhread",
-            "description": "A distributed python interpreter. Fork of xpython.",
+            "description": "Experiment on creating a distributed python interpreter.",
             "technologies": [
                 "python"
             ]
@@ -37,14 +40,14 @@
     ],
     "media": [
       {
-        "path": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg",
-        "caption": "A static cat",
-        "source_url": "https://google.com"
+        "path": "/img/uploads/setup.jpg",
+        "caption": "My current work setup",
+        "source_url": "/uses"
       },
       {
-        "path": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg",
-        "caption": "A static cat",
-        "source_url": "https://google.com"
+        "path": "/img/uploads/bhread-initial-version.png",
+        "caption": "Initial version of Bhread, a website I'm running",
+        "source_url": "/post/2023-09-21-building-a-new-social-media-platform/"
       },
       {
         "path": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg",
