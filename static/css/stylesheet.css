@@ -64,7 +64,6 @@ a {
   padding-left: 2em;
 }
 
-
 .rss-icon {
   display: inline;
 }
@@ -276,7 +275,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 #article-info-bar {
@@ -368,6 +367,11 @@ a {
 
 .article-heading-anchor {
   margin-left: auto;
+  color: lightgrey;
+  text-decoration: none;
+  &:hover {
+    color: grey;
+  }
 }
 
 #media-slider figure {

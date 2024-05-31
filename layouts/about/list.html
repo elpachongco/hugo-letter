@@ -1,0 +1,51 @@
+{{ define "main" }}
+<section id="main">
+  <div id="article-left-spacer"></div>
+  <article id="article-container">
+    <div id="title-area">
+      <h1 id="title">About</h1>
+      <p>{{ .Description }}</p>
+    </div>
+    <div>
+      <div id="article-content">
+        {{ $contents := "" }}
+        {{ $toc := "" }}
+        {{ $links := slice }}
+
+        {{ range .Pages }} 
+          {{ $contents = (print $contents .Content) }} 
+          {{ $toc = (print $toc .TableOfContents) }} 
+
+          {{ range .Page.Store.Get "links" }}
+            {{ if eq (printf "%T" .) "goldmark.linkContext" }}
+              {{ $links = union $links (slice .) }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ $links = $links | uniq }}
+
+        {{ $contents | safeHTML }}
+
+      </div>
+    </div>
+  </article>
+  <aside id="article-sidebar-container">
+    <div id="article-sidebar">
+      <h3>Contents</h3>
+      {{ $toc | safeHTML }}
+
+      {{ if $links }}
+      <h3>Links</h3>
+      <ol id="article-sidebar-links">
+        {{ range $links }}
+        <li>
+          <a href="{{ .Destination }}" title="{{ .Title }}">{{ .Text }}</a>
+        </li>
+        {{ end }}
+      </ol>
+      {{ end }}
+
+    </div>
+  </aside>
+</section>
+{{ end }}
