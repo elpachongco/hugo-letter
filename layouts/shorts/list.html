@@ -10,20 +10,22 @@
   <div id="" class="">
     <ol id="shorts-page-container" class="side-padded">
       {{ range where .Site.RegularPages "Section" "shorts" }}
-      <li class="slider-item shorts-page-item card">
-        <a href="{{ .RelPermalink }}" class="clickable-card-link">
-          <h4 id="date">{{ .Date.Format "Mon Jan 2, 2006" }}</h4>
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Content }}</p>
-        </a>
+      <li class="shorts-page-item card">
+        <div class="shorts-card">
+          <div class="shorts-card-content-container">
+            <div class="shorts-card-author-section">
+              <img class="shorts-card-author-pic" src="/logo.png"></img>
+              <span class="shorts-card-author-name">Earl</span>
+              <span class="shorts-card-date">
+                <a href="{{ .RelPermalink }}" class="card-date">
+                  {{ .Date.Format "Jan 2, 2006" }}
+                </a>
+              </span>
+            </div>
+            <div class="shorts-card-content">{{ .Content }}</div>
+          </div>
+        </div>
       </li>
-      <a href="{{ .RelPermalink }}" class="undecorated-link">
-        <li class="slider-item shorts-page-item">
-          <h4 id="date">{{ .Date.Format "Mon Jan 2, 2006" }}</h4>
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Content }}</p>
-        </li>
-      </a>
       {{ end }}
     </ol>
   </div>

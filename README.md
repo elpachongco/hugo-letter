@@ -31,3 +31,5 @@ The design of this blog came from multiple websites I've visited in the past.
 - Loading animations / page transitions / (trivia loading screen, pokemon transitions)
 - Default thumbnail if not found
 - Popups like wikipedia (using iframe)
+- Static site trello board?
+- Search -- done

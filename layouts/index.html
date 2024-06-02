@@ -67,14 +67,13 @@
           <img class="shorts-card-author-pic" src="/logo.png"></img>
           <span class="shorts-card-author-name">Earl</span>
           <span class="shorts-card-date">
-            <a href="{{ .RelPermalink }}" class="date">
+            <a href="{{ .RelPermalink }}" class="card-date">
               {{ .Date.Format "Jan 2, 2006" }}
             </a>
           </span>
         </div>
         <div class="shorts-card-content">{{ .Content }}</div>
       </div>
-      </a>
     </div>
   </li>
   {{ end }}

@@ -11,9 +11,11 @@
       </a>
     </h1>
     <div>
-      <h3>
-        {{ with .OutputFormats.Get "RSS" }}
-        <a href="{{ .Permalink }}" id="feed-subscribe" class="undecorated-link">
+      <h3 id="blog-follow">
+        {{ with .Site.GetPage "/" }}
+          {{ with .OutputFormats.Get "rss" }}
+          <a href="{{ .Permalink }}" id="feed-subscribe" class="undecorated-link">
+          {{ end }}
         {{ end }}
           <i class="rss-icon" data-feather="rss"></i>
           <span>Follow this blog</span>
@@ -26,6 +28,6 @@
 
       <a href="/shorts/" class="undecorated-link">Shorts</a>
       <a href="/about" class="undecorated-link">About</a>
-      <a href="#" class="undecorated-link">Search</a>
+      <a href="/search" class="undecorated-link">Search</a>
   </div>
 </header>
