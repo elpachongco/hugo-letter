@@ -387,8 +387,8 @@ a {
 }
 
 #media-slider figure {
-  border: 1px solid lightgrey;
-  background-color: snow;
+  border: 1px solid var(--sub-color);
+  background-color: var(--sub-alt-color);
   border-radius: 0.3rem;
   padding: 2rem;
   padding-bottom: 3rem;
