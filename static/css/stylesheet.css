@@ -44,9 +44,11 @@ a {
 }
 
 #header {
-  display: flex;
+  display: grid;
   justify-content: space-between;
   padding-top: 1em;
+  grid-auto-flow: column;
+  gap: 1em;
 }
 
 #header-nav {

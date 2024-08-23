@@ -14,6 +14,9 @@
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) { 
+  #header {
+    grid-auto-flow: row;
+  }
 }
 
 @media all and (max-width: 480px) { 
@@ -22,6 +25,10 @@
   width: 100%;
   padding: 0 1rem;
  }
+
+  #header {
+    grid-auto-flow: row;
+  }
 }
 
 
