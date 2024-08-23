@@ -38,7 +38,7 @@ a {
   margin-bottom: 0.1em;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: .5rem;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -54,6 +54,10 @@ a {
   justify-content: space-between;
   gap: 1em;
   padding-right: 2em;
+}
+
+#header-site-logo {
+  width: 32px;
 }
 
 #blog-follow {
