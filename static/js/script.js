@@ -190,17 +190,27 @@ if (savedTheme) {
   themeStyleElement.href = savedTheme;
 }
 
-themeToggler.addEventListener("click", function(event) {
-  let themeName = themeStyleElement.href.split("/");
-  themeName = themeName[themeName.length - 1];
-  let themeIdx = themes.indexOf(themeName);
+let timeout = null;
+themeToggler.addEventListener("click", function(_) {
+  // Do this here, not in the stylesheet to prevent transition on page load.
+  document.body.style.transition = "background-color .4s linear"
 
-  let cssPath = `/css/themes/${themes[themeIdx + 1]}`;
+  // Returns theme.css from localhost:1313/css/themes/theme.css 
+  let prevThemeName = themeStyleElement.href.split("/").pop();
+
+  let themeIdx = themes.indexOf(prevThemeName);
+
+  let newThemeName = themeIdx + 1 < themes.length ? themes[themeIdx + 1] : themes[0]
+  let cssPath = `/css/themes/${newThemeName}`;
   themeStyleElement.href = cssPath;
+
   localStorage.setItem("theme", cssPath);
 
-  setTimeout(() => {
-    themeToggler.innerText = themeName;
-    setTimeout(() => (themeToggler.innerText = "Theme"), 2000);
-  }, 200);
+  themeToggler.innerText = newThemeName;
+
+  if (timeout) {
+    clearInterval(timeout)
+  }
+
+  timeout = setTimeout(() => { themeToggler.innerText = "Theme"; }, 2000)
 });
