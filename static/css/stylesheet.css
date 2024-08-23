@@ -452,8 +452,11 @@ a {
 
 #all-posts-list {
   list-style-type: none;
-  width: 100ch;
+  width: 80%;
+  max-width: 1000px;
   margin-bottom: 4rem;
+  padding-inline-start:0;
+  /* padding: 0 3rem; */
 }
 
 #all-posts-heading {
@@ -485,6 +488,7 @@ a {
 
 .all-posts-list-date {
   margin-left: auto;
+  white-space: nowrap;
 }
 
 .all-posts-list-spacer {
@@ -493,6 +497,11 @@ a {
   width: 10px;
   margin: 0px auto;
   flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.all-posts-list-article {
+  max-width: 50%;
 }
 
 #site-footer {
