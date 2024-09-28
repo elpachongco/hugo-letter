@@ -1,0 +1,3 @@
+{{ $opts := merge .Options (dict "linenos" true "lineNumbersInTable" false) }}
+{{ $result := transform.HighlightCodeBlock . $opts}}
+<pre><code>{{ $result.Inner }}</code></pre>
