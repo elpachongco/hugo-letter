@@ -44,6 +44,20 @@ a {
   color: var(--main-color);
 }
 
+code {
+  background-color: var(--sub-alt-color);
+  padding: 1px 3px;
+  color: var(--main-color)
+}
+
+pre code {
+  margin: 1rem 0;
+  display: inline-block;
+  width: 100%;
+  padding: 1rem;
+  text-wrap: wrap;;
+}
+
 #content {
   font-size: 17px;
   min-height: 60vh;
