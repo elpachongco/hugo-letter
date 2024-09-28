@@ -346,8 +346,7 @@ a {
 }
 
 #article-container {
-  flex-basis: 0;
-  min-width: 100ch;
+  flex-basis: auto;
 }
 
 #article-sidebar-links {

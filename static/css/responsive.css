@@ -11,11 +11,20 @@
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) { 
+  #article-left-spacer {
+    display: none;
+  }
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) { 
   #header {
     grid-auto-flow: row;
+  }
+  #article-sidebar-container {
+    display: none;
+  }
+  #article-left-spacer {
+    display: none;
   }
 }
 
@@ -28,6 +37,9 @@
 
   #header {
     grid-auto-flow: row;
+  }
+  #article-sidebar-container {
+    display: none;
   }
 }
 
