@@ -330,7 +330,6 @@ pre code {
 }
 
 #article-content {
-  max-width: 100ch;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -387,6 +386,7 @@ pre code {
 
 #article-container {
   flex-basis: auto;
+  max-width: 90ch;
 }
 
 #article-sidebar-links {
