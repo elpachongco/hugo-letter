@@ -3,7 +3,7 @@
 Classy and easy on the eyes.
 
 This is the theme of my website, [earlps.net](https://earlps.net).
-It follows the [blog redesign checklist](https://earlps.net/2023/11/12/blog-redesign-checklist.html)
+It follows the [blog redesign checklist](https://earlps.net/post/2023-11-12-blog-redesign-checklist/)
 
 ## What I like about this theme
 
