@@ -222,7 +222,10 @@ function applyTheme(mode, idx, showTheme=true) {
     throw RangeError
   }
   let cssPath = `/css/themes/${themes[mode][idx]}`;
-  themeStyleElement.href = cssPath;
+  let newStyleElement = themeStyleElement.cloneNode();
+  newStyleElement.href = cssPath;
+  newStyleElement.id = "new-theme-link"
+  document.head.append(newStyleElement);
 
   if (!showTheme) return;
 
